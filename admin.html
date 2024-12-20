@@ -1,0 +1,141 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Harisree Academy </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="site.webmanifest">
+		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+		<!-- CSS here -->
+            <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+            <link rel="stylesheet" href="assets/css/flaticon.css">
+            <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+            <link rel="stylesheet" href="assets/css/themify-icons.css">
+            <link rel="stylesheet" href="assets/css/nice-select.css">
+            <link rel="stylesheet" href="assets/css/style.css">
+   </head>
+
+   <body> 
+    <div id="preloader-active" style="display: none;">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+
+    <header>
+        <!-- Header Start -->
+       <div class="header-area">
+            <div class="main-header "> 
+               <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-12 col-pad-0">
+                                <div class="logo">
+                                  <img src="assets/img/logo/logo.png">
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+               </div>
+             </div>
+            </div>
+       </div>
+        <!-- Header End -->
+    </header>
+
+    <main>  
+        <div class="col-12">
+            <div class="adminpanel"> 
+                 <div>
+                    <input type="button" id="addnewrow" class="btn btn-primary mtop20" value="Add New">
+                 </div>
+                 <div id="tbl_bodyItems" class="data">  
+                </div>  
+            </div> 
+        </div>
+        <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Add/Edit Details</h5> 
+                </div>
+                <div class="modal-body">
+                 <form id="bookDetails">
+                        <div class="mb-3">
+                          <input type="hidden" class="form-control" id="hdnID">
+                          <label for="date" class="form-label">Date</label>
+                          <input type="date" format="dd/mm/yyyy" class="form-control" id="date" name="date" placeholder="Enter your name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="customer_name" class="form-label">Customer Name</label>
+                            <input type="text" class="form-control" id="customer_name" name="customer_name" placeholder="Enter Customer Name">
+                          </div> 
+                          <div class="mb-3">
+                            <label for="costume_type" class="form-label">Costume Type</label>
+                            <input type="text" class="form-control" id="costume_type" name="costume_type" placeholder="Enter Costume Type">
+                          </div> 
+                          <div class="mb-3">
+                            <label for="quantity" class="form-label">Quantity</label>
+                            <input type="number" required class="form-control" id="quantity" name="quantity" placeholder="Enter Quantity">
+                          </div> 
+                          <div class="mb-3">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" id="btnsavedetails" class="btn btn-primary">Save changes</button>
+                          </div>  
+                 </form>
+                </div>
+              </div>
+            </div>
+          </div>
+    </main> 
+	<!-- JS here -->
+	
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="./assets/js/popper.min.js"></script>
+        <script src="./assets/js/bootstrap.min.js"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="./assets/js/jquery.slicknav.min.js"></script>
+        <script src="./assets/js/jquery.magnific-popup.js"></script>
+
+		<!-- Scrollup, nice-select, sticky -->
+        <script src="./assets/js/jquery.scrollUp.min.js"></script>
+        <script src="./assets/js/jquery.nice-select.min.js"></script>
+		<script src="./assets/js/jquery.sticky.js"></script> 
+        <script src="./assets/js/jquery.form.js"></script>
+        <script src="./assets/js/jquery.validate.min.js"></script>
+        <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+        
+		<!-- Jquery Plugins, main Jquery -->	
+        <script src="./assets/js/plugins.js"></script> 
+        <script src="./assets/js/bootbox.js"></script>
+        <script src="./assets/js/api.js"></script>
+        <script src="./assets/js/mudra.js"></script> 
+        <script>
+            $(function(){
+                $(document).on("ajaxSend", function(){
+        $("#preloader-active").show();
+      }).on("ajaxComplete", function(){
+        $("#preloader-active").hide();
+      }).on("ajaxError", function(){
+        $("#preloader-active").hide();
+    }); 
+                var read_url="?action=read&table=tbl_BookingDetails"; 
+                getDataAdmin(read_url);
+            });
+        </script>
+    </body>
+</html>
