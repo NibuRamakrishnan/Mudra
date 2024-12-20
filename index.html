@@ -86,16 +86,11 @@
         <script src="./assets/js/api.js"></script>
         <script src="./assets/js/mudra.js"></script>
         <script>
-            $(function(){           
-                $(document).on("ajaxSend", function(){
-        $("#preloader-active").show();
-      }).on("ajaxComplete", function(){
-        $("#preloader-active").hide();
-      }).on("ajaxError", function(){
-        $("#preloader-active").hide();
-    });       
+            $(function(){  
                 var read_url="?action=read&table=tbl_BookingDetails"; 
-                getData(read_url);
+                setInterval(function(){
+                    getData(read_url);
+                }, 5000)
             });
         </script>
     </body>
