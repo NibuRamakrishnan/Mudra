@@ -80,7 +80,7 @@ function fndelete(id){
     }
 }   
 function fnconfirmdelete(identifier){
-    if(identifier > 0){
+    if(identifier != '0' && identifier != '' && identifier != null){
     var url = "?id=" + identifier + "&action=delete&table=tbl_BookingDetails";
     deleteRecordApi(url);
     }
@@ -111,7 +111,7 @@ function fnEdit(id){
         $("#bookDetails").find("#hdnID").val(data[0].id);
         $("#bookDetails").find("#costume_type").val(data[0].CostumeType);
         $("#bookDetails").find("#quantity").val(data[0].Quantity);
-        $("#bookDetails").find("#date").val(data[0].Date);
+        $("#bookDetails").find("#date").val(convertDateYYYMMDD(data[0].Date));
         $("#exampleModal").modal("show");
     }
 }
@@ -122,4 +122,12 @@ function convertDate(datevalue)
     const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
+}
+function convertDateYYYMMDD(datevalue)
+{
+    const date = new Date(datevalue);
+    const day = String(date.getDate()).padStart(2, '0'); // Add leading zero
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
+    const year = date.getFullYear();
+    return `${year}-${month}-${day}`;
 }

@@ -19,6 +19,10 @@ else{
 });
 $("#addnewrow").on("click", function(){
     $("#bookDetails").find("#hdnID").val('0');
+    $("#bookDetails").find("#customer_name").val(''); 
+        $("#bookDetails").find("#costume_type").val('');
+        $("#bookDetails").find("#quantity").val(0);
+        $("#bookDetails").find("#date").val('');
     $("#exampleModal").modal("show"); 
 });
 });
