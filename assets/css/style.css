@@ -86,3 +86,16 @@ body{
 {
     width: 100% !important;
 }
+.preloader
+{
+    background-color: #0606069c;
+    position: absolute;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+}
+.note{
+    color: red;
+    font-size: 12px;
+}
