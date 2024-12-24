@@ -7,6 +7,13 @@ function getData(url){
         setBookingDataUI(json);
     });
 }
+function getData_gridDesign(url){
+    data_url = script_url + url;
+    $.getJSON(data_url, function (json) {
+        json.records = json.records.filter((item)=>item.IsDeleted == 0);
+        setBookingDataUI_GridDesign(json);
+    });
+}
 function getDataAdmin(url){
     data_url = script_url + url;
     $.getJSON(data_url, function (json) {
@@ -88,6 +95,7 @@ function fnconfirmdelete(identifier){
 function setBookingDataUI(json)
 { 
     var div_UI = "";
+    var temp_data = [];
     if(json != null && json.records.length > 0){ 
         $.each(json.records, function(i,k){
             var customer_name = k.CustomerName;
@@ -102,6 +110,33 @@ function setBookingDataUI(json)
         div_UI = div_UI + "<div class='empty'>" +message+"</div>";
     }
     $(".dynamicBind").html(div_UI);
+}
+function setBookingDataUI_GridDesign(json)
+{ 
+    var div_UI_col6 = "";
+    var div_UI_col6_2="";
+    var temp_data = [];
+    if(json != null && json.records.length > 0){ 
+        $.each(json.records, function(i,k){
+            var customer_name = k.CustomerName;
+            var date = k.Date;
+            var CostumeType = k.CostumeType;
+            var quantity = k.Quantity;
+            console.log(i%2);
+            if(i%2 == 0){
+                div_UI_col6 = div_UI_col6 + "<div class='dynamicUI'><div class='row'><div class='col-12'><div class='displayflex'><div class='col-10 bookData'><div class='col-12 displayflex'><div class='col-4'><span class='span_label'>Date</span><div>"+convertDate(date)+"</div></div><div class='col-4'><span class='span_label'>Customer Name</span><div>"+customer_name+"</div></div><div class='col-4'><span class='span_label'>Costume Type</span><div>"+CostumeType+"</div></div></div></div><div class='col-2 bookquantity'><span class='span_label_quanity'>Quantity</span><div style='text-align: center;' class='quantity-span'>"+quantity+"</div></div></div></div></div></div>";
+            }
+            else{
+                div_UI_col6_2 = div_UI_col6_2 + "<div class='dynamicUI'><div class='row'><div class='col-12'><div class='displayflex'><div class='col-10 bookData'><div class='col-12 displayflex'><div class='col-4'><span class='span_label'>Date</span><div>"+convertDate(date)+"</div></div><div class='col-4'><span class='span_label'>Customer Name</span><div>"+customer_name+"</div></div><div class='col-4'><span class='span_label'>Costume Type</span><div>"+CostumeType+"</div></div></div></div><div class='col-2 bookquantity'><span class='span_label_quanity'>Quantity</span><div style='text-align: center;' class='quantity-span'>"+quantity+"</div></div></div></div></div></div>";
+            }
+        }); 
+    }
+    else{
+        var message = "Sorry, No Records Found !!";
+        div_UI = div_UI + "<div class='empty'>" +message+"</div>";
+    }
+    $(".dynamicBind").html(div_UI_col6);
+    $(".dynamicBind_Second").html(div_UI_col6_2);
 }
 function fnEdit(id){
     var identifier =  $(id).attr("id");
