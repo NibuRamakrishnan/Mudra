@@ -45,10 +45,17 @@
     </header>
 
     <main>  
-        <div class="col-12">
-            <div class="dynamicBind">
-                
+        <div class="col-12 displayflex"> 
+            <div class="col-6"> 
+                <div class="dynamicBind"> 
+
+                </div> 
             </div> 
+            <div class="col-6"> 
+                <div class="dynamicBind_Second"> 
+
+                </div> 
+            </div>  
         </div>
     </main>
 	<!-- JS here -->
@@ -79,7 +86,7 @@
             $(function(){  
                 var read_url="?action=read&table=tbl_BookingDetails"; 
                 setInterval(function(){
-                    getData(read_url);
+                    getData_gridDesign(read_url);
                 }, 5000)
             });
         </script>
